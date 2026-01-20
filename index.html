@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для моей Гелечки 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #ffd6e8, #ff8fab);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* ===== PASSWORD ===== */
+#lock {
+    text-align: center;
+}
+input {
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+}
+button {
+    margin-top: 20px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    background: #fff;
+    color: #ff4f81;
+    transition: 0.3s;
+}
+button:hover {
+    transform: scale(1.1);
+    background: #ffe1ec;
+}
+
+/* ===== CARD ===== */
+.card {
+    display: none;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 30px;
+    padding: 40px;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(255,105,180,0.6);
+    animation: appear 1.5s ease;
+}
+
+h1 { font-size: 2.3em; }
+h2 { font-weight: normal; margin-bottom: 20px; }
+
+#text {
+    font-size: 1.15em;
+    line-height: 1.6;
+    min-height: 130px;
+}
+
+.secret {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.1em;
+    background: rgba(255,255,255,0.25);
+    padding: 15px;
+    border-radius: 20px;
+}
+
+/* ===== ANIMATIONS ===== */
+.heart, .kiss, .hug {
+    position: absolute;
+    animation: float 7s linear infinite;
+    user-select: none;
+}
+
+@keyframes float {
+    from { transform: translateY(110vh) scale(1); }
+    to { transform: translateY(-10vh) scale(1.6); }
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD -->
+<div id="lock">
+    <h1>Только для Котёнка 🐱💗</h1>
+    <p>Введи секретное слово</p>
+    <input type="password" id="pass" placeholder="пароль">
+    <br>
+    <button onclick="check()">Открыть 💖</button>
+</div>
+
+<!-- CARD -->
+<div class="card" id="card">
+    <h1>Ангелина 💕</h1>
+    <h2>моя Геля, Гелечка, Котёнок 🐾</h2>
+
+    <div id="text"></div>
+
+    <button onclick="kiss()">Поцеловать Гелю 😘</button><br><br>
+    <button onclick="hug()">Обнять тебя 🤍</button><br><br>
+    <button onclick="secret()">Секрет только для Котёнка 💌</button>
+
+    <div class="secret" id="secretText">
+        Гелечка… если ты это читаешь — знай:  
+        я люблю тебя всем сердцем, всей душой  
+        и хочу быть с тобой всегда 💞
+    </div>
+</div>
+
+<audio id="music" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/10/26/audio_946b8e89df.mp3">
+</audio>
+
+<script>
+/* PASSWORD */
+function check() {
+    if (document.getElementById("pass").value === "kotyonok") {
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("card").style.display = "block";
+        typeText();
+        document.getElementById("music").play();
+    } else {
+        alert("Это только для моего Котёнка 🐱");
+    }
+}
+
+/* TYPE TEXT */
+const message =
+"Я люблю тебя, Ангелина 💗 " +
+"Ты — мой уют, моё тепло и моя радость. " +
+"Геля, я таю от тебя… " +
+"Гелечка, ты мой самый любимый Котёнок 🐾💞";
+
+let i = 0;
+function typeText() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeText, 45);
+    }
+}
+
+/* BUTTONS */
+function kiss() {
+    alert("Чмок 😘 для моей Гелечки");
+    spawn("💋");
+}
+
+function hug() {
+    spawn("🤍");
+    spawn("🤍");
+    spawn("🤍");
+    alert("Я крепко обнимаю тебя…");
+}
+
+function secret() {
+    document.getElementById("secretText").style.display = "block";
+}
+
+/* FLOATING */
+function spawn(symbol) {
+    const el = document.createElement("div");
+    el.className = "heart";
+    el.innerHTML = symbol;
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = (Math.random() * 22 + 18) + "px";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 8000);
+}
+
+setInterval(() => spawn("❤️"), 300);
+</script>
+
+</body>
+</html>
