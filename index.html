@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* ===== Основные стили ===== */
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -54,7 +53,6 @@ button {
 }
 button:hover { transform: scale(1.1); background: #ffe1ec; }
 
-/* ===== Инпут ===== */
 input {
     padding: 12px;
     border-radius: 20px;
@@ -80,7 +78,7 @@ input {
 }
 
 /* ===== Сердечки и лепестки ===== */
-.heart, .petal, .kiss {
+.heart, .petal, .kiss, .star {
     position: fixed;
     user-select: none;
     pointer-events: none;
@@ -110,6 +108,13 @@ input {
     transition: 1s;
     pointer-events: none;
 }
+
+/* ===== Музыка раздел ===== */
+#musicSection {margin-top: 30px;}
+.songButton {display:block; margin:5px auto;}
+
+/* ===== Мурлыканье ===== */
+body:hover .purr {opacity:1;}
 
 /* ===== Анимации ===== */
 @keyframes gradientBG{
@@ -168,6 +173,16 @@ input {
     я люблю тебя всем сердцем, всей душой  
     и хочу быть с тобой всегда 💞
 </div>
+
+<!-- ===== Раздел с песнями ===== -->
+<div id="musicSection">
+<h3>Выбери песню 💿</h3>
+<button class="songButton" onclick="playSong('music1.mp3')">Тринадцать карат — Жить после</button>
+<button class="songButton" onclick="playSong('music2.mp3')">Мягкая любовь</button>
+<button class="songButton" onclick="playSong('music3.mp3')">Сердце твоё</button>
+<audio id="songPlayer" controls style="width:90%; margin-top:10px;"></audio>
+</div>
+
 </div>
 </div>
 
@@ -197,8 +212,8 @@ input {
 <div class="hug-hands" id="hands"></div>
 
 <!-- ===== Музыка ===== -->
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
+<audio id="music" loop class="purr">
+<source src="purr.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -207,11 +222,13 @@ function unlock() {
     if(pass.value==="kotyonok"){
         lock.style.display="none";
         main.style.display="flex";
-        music.play();
+        document.getElementById('music').play();
         startTimer();
         typeText();
         startPetals();
         startHearts();
+        startStars();
+        document.body.addEventListener('mousemove',purrMouse);
     } else alert("Только для моего Котёнка 🐱");
 }
 
@@ -248,8 +265,8 @@ function hug(){spawn("🤍"); spawn("🤍"); spawn("🤍"); hugBox.style.display
 function closeHug(){hugBox.style.display="none"; hands.style.opacity=0;}
 
 /* ===== Письмо ===== */
-function letter(){letterBox.style.display="flex"; music.volume=0.2;}
-function closeLetter(){letterBox.style.display="none"; music.volume=1;}
+function letter(){letterBox.style.display="flex"; document.getElementById('music').volume=0.2;}
+function closeLetter(){letterBox.style.display="none"; document.getElementById('music').volume=1;}
 
 /* ===== Закрой глаза ===== */
 function closeEyes(){
@@ -295,6 +312,32 @@ function startHearts(){
         document.body.appendChild(h);
         setTimeout(()=>h.remove(),8000);
     },600);
+}
+
+/* ===== Падающие звёздочки ===== */
+function startStars(){
+    setInterval(()=>{
+        const s=document.createElement("div");
+        s.className="star";
+        s.innerText="⭐";
+        s.style.left=Math.random()*100+"vw";
+        s.style.fontSize=(Math.random()*18+10)+"px";
+        document.body.appendChild(s);
+        setTimeout(()=>s.remove(),6000);
+    },1000);
+}
+
+/* ===== Мурлыканье при наведении ===== */
+function purrMouse(){
+    const purr=document.getElementById('music');
+    if(purr.paused) purr.play();
+}
+
+/* ===== Песни ===== */
+function playSong(file){
+    const player=document.getElementById('songPlayer');
+    player.src=file;
+    player.play();
 }
 
 /* ===== Финал ===== */
