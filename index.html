@@ -4,142 +4,155 @@
 <meta charset="UTF-8">
 <title>Для моей Гелечки 💗</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
+/* ===== ОБЩИЙ СТИЛЬ ===== */
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
-    overflow-x: hidden;
-    position: relative;
-    background: linear-gradient(45deg, #ffb6c1, #ffe4e1, #ffc0cb, #ff69b4);
-    background-size: 400% 400%;
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    overflow-x:hidden;
+    background: linear-gradient(45deg,#ffb6c1,#ffe4e1,#ffc0cb,#ff69b4);
+    background-size:400% 400%;
     animation: gradientBG 20s ease infinite;
-    cursor: default;
+    color:#fff;
+    cursor:default;
 }
 body.kitten {background: linear-gradient(45deg,#ffe6f2,#ffb3d9,#ffc0cb,#ff99cc);}
 
-/* ===== Центрирование ===== */
+/* ===== ЦЕНТР ===== */
 .center {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-/* ===== Карточка ===== */
+/* ===== КАРТОЧКА ===== */
 .card {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.15);
     backdrop-filter: blur(12px);
-    border-radius: 30px;
-    padding: 40px;
-    max-width: 480px;
-    text-align: center;
-    box-shadow: 0 0 60px rgba(255,105,180,0.6);
-    position: relative;
-    z-index: 5;
+    border-radius:30px;
+    padding:40px;
+    max-width:480px;
+    text-align:center;
+    box-shadow:0 0 60px rgba(255,105,180,0.6);
+    position:relative;
+    z-index:5;
 }
 
-/* ===== Кнопки ===== */
+/* ===== КНОПКИ ===== */
 button {
-    padding: 12px 26px;
-    border-radius: 30px;
-    border: none;
-    margin: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #ff4f81;
-    transition: 0.3s;
+    padding:12px 26px;
+    border-radius:30px;
+    border:none;
+    margin:8px;
+    cursor:pointer;
+    font-weight:bold;
+    color:#ff4f81;
+    transition:0.3s;
 }
-button:hover { transform: scale(1.1); background: #ffe1ec; }
-
+button:hover {transform:scale(1.1); background:#ffe1ec;}
 input {
-    padding: 12px;
-    border-radius: 20px;
-    border: none;
+    padding:12px;
+    border-radius:20px;
+    border:none;
 }
 
-/* ===== Оверлеи ===== */
+/* ===== ОВЕРЛЕИ ===== */
 .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
 }
 .overlay-content {
-    max-width: 500px;
+    max-width:500px;
     background: rgba(255,255,255,0.15);
-    padding: 30px;
-    border-radius: 25px;
-    text-align: center;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
 }
 
-/* ===== Сердечки и лепестки ===== */
-.heart, .petal, .kiss, .star {
-    position: fixed;
-    user-select: none;
-    pointer-events: none;
+/* ===== СЕРДЕЧКИ, ЛЕПЕСТКИ, ЗВЁЗДЫ ===== */
+.heart,.petal,.kiss,.star,.balloon,.paw,.cat{
+    position:fixed;
+    user-select:none;
+    pointer-events:none;
     animation: float 8s linear forwards;
 }
+
+/* ===== БОЛЬШОЕ СЕРДЦЕ ===== */
 .big-heart {
-    font-size: 70px;
-    cursor: pointer;
+    font-size:70px;
+    cursor:pointer;
     animation: beat 1s infinite;
 }
 
-/* ===== Таймер ===== */
+/* ===== ТАЙМЕР ===== */
 #timer span {
-    color: #fff;
-    text-shadow: 0 0 10px #ff9cd8,0 0 20px #ff69b4;
+    color:#fff;
+    text-shadow:0 0 10px #ff9cd8,0 0 20px #ff69b4;
     animation: blink 1s infinite alternate;
 }
 
-/* ===== Руки ===== */
+/* ===== РУКИ ===== */
 .hug-hands {
-    position: fixed;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%) perspective(800px);
-    width: 200px; height: 150px;
-    background: url('https://i.ibb.co/z2sxwLf/hands.png') no-repeat center/contain;
-    opacity: 0;
-    transition: 1s;
-    pointer-events: none;
+    position:fixed;
+    bottom:0; left:50%;
+    transform:translateX(-50%) perspective(800px);
+    width:200px; height:150px;
+    background:url('https://ibb.co.com/Nn1cfjNQ') no-repeat center/contain;
+    opacity:0;
+    transition:1s;
+    pointer-events:none;
 }
 
-/* ===== Музыка раздел ===== */
-#musicSection {margin-top: 30px;}
-.songButton {display:block; margin:5px auto;}
-
-/* ===== Мурлыканье ===== */
+/* ===== МУЗЫКА ===== */
 body:hover .purr {opacity:1;}
 
-/* ===== Анимации ===== */
+/* ===== ПЛАВАЮЩИЕ ШАРИКИ ===== */
+.balloon {
+    font-size:30px;
+    animation: floatBalloon 10s linear forwards;
+}
+
+/* ===== МЕРЦАЮЩИЕ ЗВЁЗДЫ ===== */
+.starShine {
+    color:#fff;
+    font-size:12px;
+    opacity:0.8;
+    animation: twinkle 1.5s infinite alternate;
+}
+
+/* ===== ЛАПКИ ===== */
+.paw {
+    font-size:20px;
+    opacity:0.9;
+    animation: fadePaw 1s forwards;
+}
+
+/* ===== АНИМАЦИИ ===== */
 @keyframes gradientBG{
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
 @keyframes float{
-    0%{transform: translateY(100vh) scale(1); opacity:1;}
-    100%{transform: translateY(-10vh) scale(1.6); opacity:0;}
+    0%{transform:translateY(100vh) scale(1); opacity:1;}
+    100%{transform:translateY(-10vh) scale(1.6); opacity:0;}
 }
-@keyframes beat{
-    0%{transform: scale(1);}
-    50%{transform: scale(1.15);}
-}
-@keyframes blink{
-    0%{opacity:0.6;}
-    100%{opacity:1;}
-}
+@keyframes beat{0%{transform:scale(1);}50%{transform:scale(1.15);}}
+@keyframes blink{0%{opacity:0.6;}100%{opacity:1;}}
+@keyframes floatBalloon{0%{transform:translateY(100vh) scale(1);}100%{transform:translateY(-10vh) scale(1.2);}}
+@keyframes twinkle{0%{opacity:0.2; transform:scale(0.8);}100%{opacity:1; transform:scale(1.2);}}
+@keyframes fadePaw{0%{opacity:1;}100%{opacity:0; transform:translateY(-20px);}}
 </style>
 </head>
-
 <body>
 
-<!-- ===== Пароль ===== -->
+<!-- ===== ПАРОЛЬ ===== -->
 <div class="center" id="lock">
     <div class="card">
         <h1>Только для Котёнка 🐱💗</h1>
@@ -150,15 +163,14 @@ body:hover .purr {opacity:1;}
     </div>
 </div>
 
-<!-- ===== Основная карточка ===== -->
+<!-- ===== ОСНОВНАЯ КАРТОЧКА ===== -->
 <div class="center" id="main" style="display:none">
 <div class="card">
 <h1>Ангелина 💕</h1>
 <h2>моя Геля, Гелечка, Котёнок 🐾</h2>
-
 <p id="timer"></p>
 <div id="text"></div>
-<div id="phrases" style="margin: 10px 0;"></div>
+<div id="phrases" style="margin:10px 0;"></div>
 
 <button onclick="kitten()">Режим «Котёнок» 🐾</button><br>
 <button onclick="kiss()">Поцеловать Гелю 😘</button><br>
@@ -168,13 +180,13 @@ body:hover .purr {opacity:1;}
 <div class="big-heart" onclick="heartClick()">❤️</div><br>
 <button onclick="forever()">Я люблю тебя. Навсегда.</button>
 
-<div class="secret" id="secretText">
-    Гелечка… если ты это читаешь — знай:  
-    я люблю тебя всем сердцем, всей душой  
-    и хочу быть с тобой всегда 💞
+<div class="secret" id="secretText" style="display:none">
+Гелечка… если ты это читаешь — знай:  
+я люблю тебя всем сердцем, всей душой  
+и хочу быть с тобой всегда 💞
 </div>
 
-<!-- ===== Раздел с песнями ===== -->
+<!-- ===== МУЗЫКА ===== -->
 <div id="musicSection">
 <h3>Выбери песню 💿</h3>
 <button class="songButton" onclick="playSong('music1.mp3')">Тринадцать карат — Жить после</button>
@@ -182,24 +194,18 @@ body:hover .purr {opacity:1;}
 <button class="songButton" onclick="playSong('music3.mp3')">Сердце твоё</button>
 <audio id="songPlayer" controls style="width:90%; margin-top:10px;"></audio>
 </div>
-
-</div>
 </div>
 
-<!-- ===== Письмо ===== -->
+<!-- ===== ПИСЬМО ===== -->
 <div class="overlay" id="letterBox">
 <div class="overlay-content">
 <h2>Гелечка…</h2>
-<p>
-Если ты скучаешь — знай, я рядом даже на расстоянии.  
-Ты мой дом, мой свет и моя любовь.  
-Я всегда выберу тебя. Всегда.
-</p>
+<p>Если ты скучаешь — знай, я рядом даже на расстоянии. Ты мой дом, мой свет и моя любовь. Я всегда выберу тебя. Всегда.</p>
 <button onclick="closeLetter()">🤍</button>
 </div>
 </div>
 
-<!-- ===== Объятия ===== -->
+<!-- ===== ОБЪЯТИЯ ===== -->
 <div class="overlay" id="hugBox">
 <div class="overlay-content">
 <h2>Иди сюда…</h2>
@@ -208,32 +214,34 @@ body:hover .purr {opacity:1;}
 </div>
 </div>
 
-<!-- ===== Руки ===== -->
 <div class="hug-hands" id="hands"></div>
 
-<!-- ===== Музыка ===== -->
 <audio id="music" loop class="purr">
 <source src="purr.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-/* ===== Пароль ===== */
-function unlock() {
-    if(pass.value==="kotyonok"){
+/* ===== ПАРОЛЬ ===== */
+function unlock(){
+    if(pass.value==="1612"){
         lock.style.display="none";
         main.style.display="flex";
-        document.getElementById('music').play();
+        music.play();
         startTimer();
         typeText();
         startPetals();
         startHearts();
         startStars();
+        startBalloons();
+        startCats();
+        startSweetNotes();
         document.body.addEventListener('mousemove',purrMouse);
+        document.body.addEventListener('mousemove',pawTrail);
     } else alert("Только для моего Котёнка 🐱");
 }
 
-/* ===== Таймер с подсветкой ===== */
-const startDate = new Date(Date.now()-(35*24*60*60+21*60*60+17*60)*1000);
+/* ===== ТАЙМЕР ===== */
+const startDate=new Date(Date.now()-(35*24*60*60+21*60*60+17*60)*1000);
 function startTimer(){
     setInterval(()=>{
         const diff=Date.now()-startDate;
@@ -245,36 +253,33 @@ function startTimer(){
     },1000);
 }
 
-/* ===== Текст ===== */
+/* ===== ТЕКСТ ===== */
 const message="Я люблю тебя, Ангелина 💗 Ты — мой уют, моё тепло и моя радость. Геля, я таю от тебя… Гелечка, ты мой самый любимый Котёнок 🐾💞";
 let i=0;
 function typeText(){if(i<message.length){text.innerHTML+=message.charAt(i);i++;setTimeout(typeText,45);}}
 
-/* ===== Фразы ===== */
+/* ===== ФРАЗЫ ===== */
 const texts=["Ты моё солнышко ☀️","Я тобой горжусь","Ты самая красивая"];
 setInterval(()=>{phrases.innerText=texts[Math.floor(Math.random()*texts.length)];},15000);
 
-/* ===== Режим Котёнок ===== */
+/* ===== РЕЖИМ КОТЁНОК ===== */
 function kitten(){document.body.classList.toggle("kitten");}
 
-/* ===== Поцелуй ===== */
+/* ===== ПОЦЕЛУЙ ===== */
 function kiss(){alert("Чмок 😘 для моей Гелечки"); spawn("💋");}
 
-/* ===== Объятия ===== */
+/* ===== ОБЪЯТИЯ ===== */
 function hug(){spawn("🤍"); spawn("🤍"); spawn("🤍"); hugBox.style.display="flex"; hands.style.opacity=1; setTimeout(()=>{hands.style.opacity=0;},3000);}
 function closeHug(){hugBox.style.display="none"; hands.style.opacity=0;}
 
-/* ===== Письмо ===== */
-function letter(){letterBox.style.display="flex"; document.getElementById('music').volume=0.2;}
-function closeLetter(){letterBox.style.display="none"; document.getElementById('music').volume=1;}
+/* ===== ПИСЬМО ===== */
+function letter(){letterBox.style.display="flex"; music.volume=0.2;}
+function closeLetter(){letterBox.style.display="none"; music.volume=1;}
 
-/* ===== Закрой глаза ===== */
-function closeEyes(){
-    let i=3;
-    const t=setInterval(()=>{alert(i--); if(i<0){clearInterval(t);alert("Я люблю тебя 🤍");}},800);
-}
+/* ===== ЗАКРОЙ ГЛАЗА ===== */
+function closeEyes(){let i=3; const t=setInterval(()=>{alert(i--); if(i<0){clearInterval(t);alert("Я люблю тебя 🤍");}},800);}
 
-/* ===== Сердечки ===== */
+/* ===== СЕРДЕЧКИ ===== */
 let clicks=0;
 function heartClick(){clicks++; spawn("❤️",true); if(clicks>=5){alert("Это только между нами… Я навсегда твой."); clicks=0;}}
 function spawn(symbol, shimmer=false){
@@ -288,7 +293,7 @@ function spawn(symbol, shimmer=false){
     setTimeout(()=>e.remove(),8000);
 }
 
-/* ===== Падающие лепестки ===== */
+/* ===== ПАДАЮЩИЕ ЛЕПЕСТКИ ===== */
 function startPetals(){
     setInterval(()=>{
         const p=document.createElement("div");
@@ -301,7 +306,7 @@ function startPetals(){
     },400);
 }
 
-/* ===== Светящиеся сердца ===== */
+/* ===== СЕРДЕЧКИ ===== */
 function startHearts(){
     setInterval(()=>{
         const h=document.createElement("div");
@@ -314,7 +319,7 @@ function startHearts(){
     },600);
 }
 
-/* ===== Падающие звёздочки ===== */
+/* ===== ПАДАЮЩИЕ ЗВЁЗДЫ ===== */
 function startStars(){
     setInterval(()=>{
         const s=document.createElement("div");
@@ -327,26 +332,81 @@ function startStars(){
     },1000);
 }
 
-/* ===== Мурлыканье при наведении ===== */
-function purrMouse(){
-    const purr=document.getElementById('music');
-    if(purr.paused) purr.play();
+/* ===== ПЛАВАЮЩИЕ ШАРИКИ ===== */
+function startBalloons(){
+    setInterval(()=>{
+        const b=document.createElement("div");
+        b.className="balloon";
+        b.innerText="🎈";
+        b.style.left=Math.random()*100+"vw";
+        document.body.appendChild(b);
+        setTimeout(()=>b.remove(),10000);
+    },1500);
 }
 
-/* ===== Песни ===== */
+/* ===== МИЛЫЕ КОТИКИ ===== */
+function startCats(){
+    setInterval(()=>{
+        const c=document.createElement("div");
+        c.className="cat";
+        c.innerText="🐱";
+        c.style.left=Math.random()*100+"vw";
+        c.style.fontSize=(Math.random()*30+20)+"px";
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),9000);
+    },2000);
+}
+
+/* ===== СЛУЧАЙНЫЕ МИЛЫЕ СООБЩЕНИЯ ===== */
+const sweetNotes=["Ты моё солнышко ☀️","Я таю от тебя 💕","Навсегда твой 🐱","Ты моя радость 💖"];
+function startSweetNotes(){
+    setInterval(()=>{
+        const note=document.createElement("div");
+        note.innerText=sweetNotes[Math.floor(Math.random()*sweetNotes.length)];
+        note.style.position="fixed";
+        note.style.left=Math.random()*80+"vw";
+        note.style.top=Math.random()*80+"vh";
+        note.style.background="rgba(255,192,203,0.5)";
+        note.style.padding="8px 12px";
+        note.style.borderRadius="15px";
+        note.style.fontSize="16px";
+        note.style.pointerEvents="none";
+        note.style.animation="float 4s linear forwards";
+        document.body.appendChild(note);
+        setTimeout(()=>note.remove(),4000);
+    },7000);
+}
+
+/* ===== ЛАПКИ ЗА МЫШЬЮ ===== */
+function pawTrail(e){
+    const paw=document.createElement("div");
+    paw.className="paw";
+    paw.innerText="🐾";
+    paw.style.left=(e.clientX-10)+"px";
+    paw.style.top=(e.clientY-10)+"px";
+    document.body.appendChild(paw);
+    setTimeout(()=>paw.remove(),1000);
+}
+
+/* ===== МУРЛЫКАНЬЕ ===== */
+function purrMouse(){
+    if(music.paused) music.play();
+}
+
+/* ===== ПЕСНИ ===== */
 function playSong(file){
     const player=document.getElementById('songPlayer');
     player.src=file;
     player.play();
 }
 
-/* ===== Финал ===== */
+/* ===== ФИНАЛ ===== */
 function forever(){alert("Навсегда — это ты 🤍");}
 
-/* ===== Секрет ===== */
+/* ===== СЕКРЕТ ===== */
 function secret(){secretText.style.display="block";}
 
-/* ===== Ночной режим ===== */
+/* ===== НОЧНОЙ РЕЖИМ ===== */
 if(new Date().getHours()>=22){phrases.innerText="Я мысленно рядом с тобой…";}
 </script>
 </body>
