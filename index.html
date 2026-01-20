@@ -61,7 +61,7 @@ input{padding:12px;border-radius:20px;border:none;}
 </div>
 <div id="musicSection">
 <h3>Выбери песню 💿</h3>
-<button class="songButton" onclick="playSong('music1.mp3')">Тринадцать карат — Жить после</button>
+<button class="songButton" onclick="playSong('https://on.soundcloud.com/jGLpLeDKdklSgJspu5')">Тринадцать карат — Жить после</button>
 <button class="songButton" onclick="playSong('music2.mp3')">Мягкая любовь</button>
 <button class="songButton" onclick="playSong('music3.mp3')">Сердце твоё</button>
 <audio id="songPlayer" controls style="width:90%; margin-top:10px;"></audio>
@@ -142,6 +142,44 @@ function spawnConfetti(){
     setTimeout(()=>c.remove(),3000);
   }
 }
+<!-- ===== Раздел с нашими событиями ===== -->
+<div class="center" id="lifeEvents" style="display:flex;flex-direction:column;align-items:center;margin-top:50px;">
+  <h2>Наши незабываемые моменты 💖</h2>
+  <div class="eventCard" style="margin:10px;padding:20px;border-radius:25px;background:rgba(255,182,193,0.3);width:90%;max-width:500px;position:relative;cursor:pointer;transition:0.3s;">
+    <h3>16.12.2025 — Знакомоство 🌸</h3>
+    <p>Мы впервые встретились в парке, гуляли и смеялись весь день. Этот день навсегда в моём сердце.</p>
+  </div>
+  <div class="eventCard" style="margin:10px;padding:20px;border-radius:25px;background:rgba(255,182,193,0.3);width:90%;max-width:500px;position:relative;cursor:pointer;transition:0.3s;">
+    <h3>20.12.2025 — Первый просмотр фильма 🍿</h3>
+    <p>Мы вместе смотрел фильм груз 200, я тогда кушал засохшие крекеры.</p>
+  </div>
+  <div class="eventCard" style="margin:10px;padding:20px;border-radius:25px;background:rgba(255,182,193,0.3);width:90%;max-width:500px;position:relative;cursor:pointer;transition:0.3s;">
+    <h3>25.12.2025 — Назначение на АП 💌</h3>
+    <p>Я тогда очень сильно радовался, люблю тебя.</p>
+  </div>
+</div>
+
+<script>
+// ===== Анимация сердечек при наведении на события =====
+const eventCards = document.querySelectorAll('.eventCard');
+eventCards.forEach(card=>{
+  card.addEventListener('mouseenter',()=>{
+    const heart=document.createElement('div');
+    heart.className='heart';
+    heart.innerText='💖';
+    heart.style.left=(card.getBoundingClientRect().left + Math.random()*100)+"px";
+    heart.style.top=(card.getBoundingClientRect().top + Math.random()*20)+"px";
+    heart.style.fontSize=(Math.random()*20+15)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),2000);
+    card.style.transform='scale(1.05)';
+    card.style.boxShadow='0 0 30px rgba(255,105,180,0.5)';
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='scale(1)';
+    card.style.boxShadow='0 0 10px rgba(255,105,180,0.3)';
+  });
+});
 </script>
 </body>
 </html>
